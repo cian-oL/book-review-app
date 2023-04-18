@@ -15,29 +15,19 @@ const BookList = () => {
 };
 
 const Book = () => {
+  const title = "Bored of Lunch: The Healthy Air Fryer Book: THE NO.1 BESTSELLER";
+  const author = "Nathan Anthony";
+
   return (
     <article className="book">
-      <Image />
-      <Title />
-      <Author />
+      <img
+        src="./images/amazon-book1.jpg"
+        alt="Bored of Lunch Book Cover"
+      />
+      <h2>{title}</h2>
+      <h3>{author}</h3>
     </article>
   );
-};
-
-const Image = () => {
-  return (
-    <img src="./images/amazon-book1.jpg" alt="Bored of Lunch Book Cover" />
-  );
-};
-
-const Title = () => {
-  return (
-    <h2>Bored of Lunch: The Healthy Air Fryer Book: THE NO.1 BESTSELLER</h2>
-  );
-};
-
-const Author = () => {
-  return <h3 style={{color: '#617d98', fontSize: '0.75rem', marginTop: '0.5rem'}}>Nathan Anthony</h3>;
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
