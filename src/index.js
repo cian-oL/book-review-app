@@ -1,8 +1,8 @@
 import React, { createFactory } from "react";
 import ReactDOM from "react-dom/client";
-
 import "./index.css";
 
+// book data
 const books = [
   {
     title: "Bored of Lunch: The Healthy Air Fryer Book: THE NO.1 BESTSELLER",
@@ -18,16 +18,19 @@ const books = [
   },
 ];
 
+//Component for book data
 const BookList = () => {
   return (
     <section className="book-list">
       {books.map((book) => {
-        return <Book {...book} key={book.id} />;
+        return <Book {...book} key={book.id} />; //cannot access an object directly. Also using spread to accress & pass in all props from the obj
+        // alternative approach: <Book book={book} />... and in Book Component, access props by {destructed} = book.props or by {{ book: { destructured } }} 
       })}
     </section>
   );
 };
 
+// Component for render of each book
 const Book = ({ author, title, image }) => {
   return (
     <article className="book">
@@ -38,5 +41,6 @@ const Book = ({ author, title, image }) => {
   );
 };
 
+// render in React
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<BookList />);
