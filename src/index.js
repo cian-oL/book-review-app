@@ -30,44 +30,6 @@ const BookList = () => {
   );
 };
 
-// // Component for event handling
-// const EventExamples = () => {
-//   // const handleFormInput = (e) => {
-//   //   console.log(e);
-//   //   console.log(e.target.name);
-//   //   console.log(e.target.value);
-//   //   console.log("Handle Form Input");
-//   // };
-
-//   // const handleButtonInput = () => {
-//   //   alert("Handle Button Input");
-//   // };
-
-//   // const handleFormSubmission = (e) => {
-//   //   e.preventDefault(); // add this in because we want to handle the forms ourselves, not on another url
-//   //   console.log("Form Submitted");
-//   // };
-
-//   return (
-//     <section>
-//       <form onSubmit={() => console.log("Submitted")}>
-//         <h2>Typical Form</h2>
-//         <input
-//           type="text"
-//           name="example"
-//           onChange={(e) => console.log(e.target.value)}
-//           style={{ margin: "1rem 0" }}
-//         />
-//         <button type="button" onClick={() => console.log("Click Me clicked")}>
-//           Click Me!
-//         </button>
-//         <button type="submit">Submit</button>
-//       </form>
-//       {/* button needs to have a submit type for submitting form -- standard html */}
-//     </section>
-//   );
-// };
-
 // Component for render of each book
 const Book = ({ author, title, image }) => {
   const displayTitle = () => console.log(title);
