@@ -22,10 +22,49 @@ const books = [
 const BookList = () => {
   return (
     <section className="book-list">
+      <EventExamples />
       {books.map((book) => {
         return <Book {...book} key={book.id} />; //cannot access an object directly. Also using spread to accress & pass in all props from the obj
-        // alternative approach: <Book book={book} />... and in Book Component, access props by {destructed} = book.props or by {{ book: { destructured } }} 
+        // alternative approach: <Book book={book} />... and in Book Component, access props by {destructed} = book.props or by {{ book: { destructured } }}
       })}
+    </section>
+  );
+};
+
+// Component for event handling
+const EventExamples = () => {
+  const handleFormInput = (e) => {
+    console.log(e);
+    console.log(e.target.name);
+    console.log(e.target.value);
+    console.log("Handle Form Input");
+  };
+
+  const handleButtonInput = () => {
+    alert("Handle Button Input");
+  };
+
+  const handleFormSubmission = (e) => {
+    e.preventDefault(); // add this in because we want to handle the forms ourselves, not on another url
+    console.log("Form Submitted");
+  };
+
+  return (
+    <section>
+      <form onSubmit={handleFormSubmission}>
+        <h2>Typical Form</h2>
+        <input
+          type="text"
+          name="example"
+          onChange={handleFormInput}
+          style={{ margin: "1rem 0" }}
+        />
+        <button type="button" onClick={handleButtonInput}>
+          Click Me!
+        </button>
+        <button type="submit">Submit</button>
+      </form>
+      {/* button needs to have a submit type for submitting form -- standard html */}
     </section>
   );
 };
