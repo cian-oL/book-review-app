@@ -22,7 +22,6 @@ const books = [
 const BookList = () => {
   return (
     <section className="book-list">
-      <EventExamples />
       {books.map((book) => {
         return <Book {...book} key={book.id} />; //cannot access an object directly. Also using spread to accress & pass in all props from the obj
         // alternative approach: <Book book={book} />... and in Book Component, access props by {destructed} = book.props or by {{ book: { destructured } }}
@@ -31,50 +30,53 @@ const BookList = () => {
   );
 };
 
-// Component for event handling
-const EventExamples = () => {
-  const handleFormInput = (e) => {
-    console.log(e);
-    console.log(e.target.name);
-    console.log(e.target.value);
-    console.log("Handle Form Input");
-  };
+// // Component for event handling
+// const EventExamples = () => {
+//   // const handleFormInput = (e) => {
+//   //   console.log(e);
+//   //   console.log(e.target.name);
+//   //   console.log(e.target.value);
+//   //   console.log("Handle Form Input");
+//   // };
 
-  const handleButtonInput = () => {
-    alert("Handle Button Input");
-  };
+//   // const handleButtonInput = () => {
+//   //   alert("Handle Button Input");
+//   // };
 
-  const handleFormSubmission = (e) => {
-    e.preventDefault(); // add this in because we want to handle the forms ourselves, not on another url
-    console.log("Form Submitted");
-  };
+//   // const handleFormSubmission = (e) => {
+//   //   e.preventDefault(); // add this in because we want to handle the forms ourselves, not on another url
+//   //   console.log("Form Submitted");
+//   // };
 
-  return (
-    <section>
-      <form onSubmit={handleFormSubmission}>
-        <h2>Typical Form</h2>
-        <input
-          type="text"
-          name="example"
-          onChange={handleFormInput}
-          style={{ margin: "1rem 0" }}
-        />
-        <button type="button" onClick={handleButtonInput}>
-          Click Me!
-        </button>
-        <button type="submit">Submit</button>
-      </form>
-      {/* button needs to have a submit type for submitting form -- standard html */}
-    </section>
-  );
-};
+//   return (
+//     <section>
+//       <form onSubmit={() => console.log("Submitted")}>
+//         <h2>Typical Form</h2>
+//         <input
+//           type="text"
+//           name="example"
+//           onChange={(e) => console.log(e.target.value)}
+//           style={{ margin: "1rem 0" }}
+//         />
+//         <button type="button" onClick={() => console.log("Click Me clicked")}>
+//           Click Me!
+//         </button>
+//         <button type="submit">Submit</button>
+//       </form>
+//       {/* button needs to have a submit type for submitting form -- standard html */}
+//     </section>
+//   );
+// };
 
 // Component for render of each book
 const Book = ({ author, title, image }) => {
+  const displayTitle = () => console.log(title);
+
   return (
     <article className="book">
       <img src={image} alt={title} />
       <h2>{title}</h2>
+      <button onClick={displayTitle}>Display Title</button>
       <h3>{author}</h3>
     </article>
   );
