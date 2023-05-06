@@ -20,10 +20,16 @@ const books = [
 
 //Component for book data
 const BookList = () => {
+  const getBook = (id) => {
+    const foundBook = books.find((book) => book.id === id);
+    console.log(foundBook);
+  }
+  
   return (
     <section className="book-list">
       {books.map((book) => {
-        return <Book {...book} key={book.id} />; //cannot access an object directly. Also using spread to accress & pass in all props from the obj
+        return <Book {...book} key={book.id} getBook={getBook} />;
+        //cannot access an object directly. Also using spread to accress & pass in all props from the obj
         // alternative approach: <Book book={book} />... and in Book Component, access props by {destructed} = book.props or by {{ book: { destructured } }}
       })}
     </section>
@@ -31,8 +37,11 @@ const BookList = () => {
 };
 
 // Component for render of each book
-const Book = ({ author, title, image }) => {
-  const displayTitle = () => console.log(title);
+const Book = ({ author, title, image, getBook, id }) => {
+  const displayTitle = () => {
+    getBook(id);
+  }
+  // alternatively, you could use an anon fcn in the onClick that calls getBook(id)
 
   return (
     <article className="book">
