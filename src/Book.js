@@ -1,5 +1,5 @@
 // Component for render of each book
-const Book = ({ author, title, image, getBook, id }) => {
+const Book = ({ author, title, image, getBook, id, index }) => {
     const displayTitle = () => {
       getBook(id);
     }
@@ -7,6 +7,7 @@ const Book = ({ author, title, image, getBook, id }) => {
   
     return (
       <article className="book">
+        <span className="rank">{index + 1}</span>
         <img src={image} alt={title} />
         <h2>{title}</h2>
         <button onClick={displayTitle}>Display Title</button>
